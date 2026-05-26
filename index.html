@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Japan Planner</title>
+  <meta name="theme-color" content="#2b38f0" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-route="home" aria-label="回到首頁">
+        <span class="brand-mark">旅</span>
+        <span>
+          <strong>Japan Planner</strong>
+          <em>24/7 → 2/8</em>
+        </span>
+      </button>
+      <button class="icon-btn" id="settingsBtn" aria-label="設定">⚙️</button>
+    </header>
+
+    <nav class="bottom-nav" aria-label="主要分頁">
+      <button data-route="home" class="nav-item active"><span>🏠</span><b>首頁</b></button>
+      <button data-route="itinerary" class="nav-item"><span>🗓️</span><b>行程</b></button>
+      <button data-route="stays" class="nav-item"><span>🏨</span><b>住宿</b></button>
+      <button data-route="budget" class="nav-item"><span>💰</span><b>資金</b></button>
+    </nav>
+
+    <main id="app" class="page"></main>
+  </div>
+
+  <dialog id="settingsDialog" class="modal">
+    <form method="dialog" class="modal-card">
+      <div class="modal-head">
+        <h2>網站設定</h2>
+        <button class="ghost-btn" value="cancel">✕</button>
+      </div>
+      <label>
+        你的代號
+        <select id="personSelect">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+        </select>
+      </label>
+      <label>
+        港幣 → 日圓匯率
+        <input id="rateInput" type="number" step="0.01" min="0" placeholder="例如 20" />
+        <small>資金頁以港幣為原始輸入，按一下可轉成日圓顯示。</small>
+      </label>
+      <label>
+        Google Apps Script Web App URL（可選）
+        <input id="apiUrlInput" type="url" placeholder="https://script.google.com/macros/s/.../exec" />
+        <small>如果你已經做到同步版，可以貼入；沒有也可用，本機儲存。</small>
+      </label>
+      <label>
+        共用密碼（可選）
+        <input id="accessCodeInput" type="password" placeholder="如 0826" />
+      </label>
+      <button id="saveSettings" class="primary-btn" value="default">儲存設定</button>
+    </form>
+  </dialog>
+
+  <template id="toastTemplate">
+    <div class="toast"></div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
